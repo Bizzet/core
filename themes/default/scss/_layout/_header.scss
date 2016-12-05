@@ -1,0 +1,151 @@
+@import "./_modules/variables";
+
+.header {
+	font-family: "Heebo", $sans-serif;
+	height:100%;
+  	min-height:100%;  /*for mozilla*/
+	background: $blue;
+	color: $white;
+	text-align: center;
+}
+
+
+.header__wrapper {
+	height: auto;
+	padding-top: 3em;
+	display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+	
+}
+
+.header__greeting{
+	color: $white;
+	font-size: 1.6em;
+}
+
+.header__logo a{
+	color: $white;
+	
+	margin-bottom: 1em;
+	font-size: 2em;
+	
+	&::visited {
+		color: $white
+	}
+}
+.header__subtitle {
+	color: $white;
+	padding-bottom: 20px
+}
+.header__social {
+	flex-basis: 100%;
+	font-size: 3em;
+
+	
+}
+.header__social ul {
+	margin: 0 auto;
+}
+.header__social li {
+	display: inline-block;
+	float: left;
+	padding-bottom: 0.5em;
+}
+
+.header__nav {
+	text-align: left;
+    list-style: none;
+    margin-top: 4em;
+    width: 70%;
+}
+
+
+.header__nav ul {
+    list-style: none;
+
+}
+.header__nav li {
+	line-height: 2.2;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.header__nav a {
+	color: $white;
+	font-size: 2em;
+}
+
+@include breakpoint(500px) {
+	.header__wrapper {
+		display: flex;
+  	 	flex-direction: column;
+   	 	flex-wrap: wrap;
+   		align-items: center;
+	
+	}
+	.header__logo {
+		max-width: 500px;
+		margin-left: 1em;
+		margin-top: 0.2em;
+	}
+
+	.header__social li {
+	display: inline-block;
+	float: left;
+}
+	.header__logo a{
+		font-size: 3em;
+	}
+}
+@include breakpoint(800px) {
+	.header__wrapper {
+		display: flex;
+		flex-direction: row;
+		text-align: left;
+		justify-content: space-between;
+	}
+	.header__greeting {
+		margin-bottom: 0.5em;
+	}
+	.header__logo {
+		padding-left: 60px;
+		flex-basis: auto;
+	}
+	.header__logo a{
+		font-size: 5em;
+		font-weight: 300;
+		letter-spacing: -8px;
+	}
+	.header__subtitle {
+		text-align: right;
+		color: $white;
+	}
+	.header__social {
+		width: 20%;
+		flex-basis: auto;
+		font-size: 5em;
+		text-align: right;
+		padding-right: 1em;
+	}
+	.header__social ul {
+		list-style: none;
+	}
+	.header__social li {
+		display: block;
+		float: none;
+	}
+
+	.header__nav {
+		flex-basis: 100%;
+		padding-left: 6em;
+		padding-right: 2em;
+	}
+	.header__nav li {
+	    margin-left: 2em;
+	    margin-right: 2em;
+	    display: inline-block;
+	    float: left;
+	}
+}

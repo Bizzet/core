@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+    <meta charset="utf-8" />
+
+    <title>{% if meta.title %}{{ meta.title }} | {% endif %}{{ site_title }}</title>
+    {% if meta.description %}
+        <meta name="description" content="{{ meta.description|striptags }}">
+    {% endif %}{% if meta.robots %}
+        <meta name="robots" content="{{ meta.robots }}">
+    {% endif %}
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Heebo:100,300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light" rel="stylesheet">
+    <link rel="stylesheet" href="{{ theme_url }}/style.css" type="text/css" />
+    <link rel="stylesheet" href="{{ theme_url }}/font/fontello.css" type="text/css" />
+
+    <script src="{{ theme_url }}/scripts/modernizr-2.6.1.min.js"></script>
+    <script src="{{ theme_url }}/scripts/jquery-3.1.1.min.js"></script>
+    <script src="{{ theme_url }}/scripts/jquery.aniview.js"></script>
+    <script src="{{ theme_url }}/scripts/jquery.fullpage.js"></script>
+    <script src="{{ theme_url }}/scripts/animation.js"></script>
+</head>
+<body>
+<div class="body__wrapper fullpage">
+    <header class="header section">
+        <div class="header__wrapper">
+            
+            <div class="header__logo">
+                <h3 class="header__greeting animated bounceInDown">Hi, I'm</h3>
+                <h1 class="header__title animated tada"><a href="/" >Brennan Hampton</a></h1>
+                <h2 class="header__subtitle animated zoomIn"> A Digital Artist from SoCal</h2>
+            </div>
+            
+            <div class="header__social animated bounceInDown">
+            
+            <div class="header__calltoaction">
+                <div>Follow Me</div>
+                <div class="arrow"></div>
+            </div>
+                    <li><i class="icon-facebook"></i></li>
+                    <li><i class="icon-twitter"></i></li>
+                    <li><i class="icon-gplus"></i></li>
+                    <li><i class="icon-linkedin"></i></li>
+                    <li><i class="icon-github"></i></li>
+                </ul>
+            </div>
+            <nav class="header__nav">
+                <ul>
+                    {% for page in pages if page.title %}
+                        {% if not (page.id starts with "blog/") %}
+                        <li{% if page.id == current_page.id %} class="active"{% endif %}>
+                            <a href="{{ page.url }}">{{ page.title }}</a>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <section class="main section">
+        <div class="main__wrapper">
+            {{ content }}
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="footer__inner">
+            <div class="footer__social">
+                {% for social in meta.social %}
+                    <a href="{{ social.url }}" title="{{ social.title }}"><span class="icon-{{ social.icon }}"></span></a>
+                {% endfor %}
+            </div>
+            <a href="http://picocms.org/">Pico</a> was made by <a href="http://gilbert.pellegrom.me">Gilbert Pellegrom</a>
+            and is maintained by <a href="https://github.com/picocms/Pico/graphs/contributors">The Pico Community</a>.
+            Released under the <a href="https://github.com/picocms/Pico/blob/master/LICENSE.md">MIT license</a>.
+        </div>
+    </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+
+table {
+	margin: 2em auto;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th {
+	font-size: 1.2em;
+	text-align: center;
+	padding-bottom: 10px;
+}
+
+td {
+	padding: 7px;
+}
+caption, th, td {
+    text-align: left;
+    font-weight: normal;
+} 
