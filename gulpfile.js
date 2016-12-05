@@ -1,6 +1,7 @@
 var gulp = require('gulp'),
     plumber = require('gulp-plumber'),
     rename = require('gulp-rename');
+var argv = require('yargs').argv;
 var git = require('gulp-git');
 var runSequence = require('run-sequence');
 var autoprefixer = require('gulp-autoprefixer');
@@ -70,32 +71,34 @@ gulp.task('scripts', function(){
     .pipe(browserSync.reload({stream:true}))
 });
 
-gulp.task('gitadd', function() {
-  console.log('adding...');
+gulp.task('gitadd', function(){
+  console.log('adding');
   return gulp.src('.')
     .pipe(git.add());
 });
 
-gulp.task('gitcommit', function() {
+gulp.task('gitcommit', function(){
   console.log('commiting');
-  if (argv.m) {
-    return gulp.src('.')
-      .pipe(git.commit(argv.m));
-  }
+  return gulp.src('')
+    .pipe(git.commit('initial commit'));
 });
 
+
+/*
 gulp.task('gitpush', function(){
   console.log('pushing...');
   git.push('origin', 'master', function (err) {
     if (err) throw err;
   });
 });
+*/
+
 
 gulp.task('gitsend', function() {
-  runSequence('gitadd', 'gitcommit', 'gitpush');
+  runSequence('gitadd', 'gitcommit');
 });
 
-gulp.task('default', ['browser-sync', 'styles'], function(){
+gulp.task('default', ['browser-sync', 'styles', 'gitsend'], function(){
   gulp.watch(theme + "scss/**/*.scss", ['styles']);
 //  gulp.watch(theme + "scripts/**/*.js", ['scripts']);
   gulp.watch(content + "**/*.md", ['bs-reload']);
