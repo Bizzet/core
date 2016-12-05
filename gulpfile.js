@@ -53,7 +53,7 @@ gulp.task('styles', function(){
 //   .pipe(rename({suffix: '.min'}))
 //   .pipe(minifycss())
 //    .pipe(gulp.dest('/'))
-    .pipe(browserSync.reload({stream:true}))
+     runSequence('bs-reload', 'gitadd', 'gitcommit');
 });
 
 gulp.task('scripts', function(){
@@ -68,7 +68,7 @@ gulp.task('scripts', function(){
     .pipe(rename({suffix: '.min'}))
     .pipe(uglify())
     .pipe(gulp.dest(theme + 'scripts/build/'))
-    .pipe(browserSync.reload({stream:true}))
+    runSequence('bs-reload', 'gitadd', 'gitcommit');
 });
 
 gulp.task('gitadd', function(){
